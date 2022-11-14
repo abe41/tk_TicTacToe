@@ -1,0 +1,63 @@
+# マルバツゲーム
+
+## 概要
+- プレイヤーは二人
+- 3*3のマスに交互に打っていく
+- 先に一列揃えた方が勝ち
+- 記号の種類は○と×
+
+## 流れ
+1. 着手できるか()
+2. 先手が着手
+3. 列がそろっているか()
+4. 着手できるか判定
+5. 後手が着手
+6. 列がそろっているか()
+7. if-goto 1
+8. 勝利者を出力()
+
+## 要件
+- プレイヤー vs コンピュータ
+- 先手と後手はランダムで決まる
+- コンピュータを作る
+- 最終的にはtkinterでguiにする
+
+## クラス
+- TicTacToe class
+  * ゲームの流れを管理
+  - board
+  - human
+  - cpu
+  - first_player
+  - second_player
+  - __init__()
+  - play()  
+  - win_message(name)
+
+- Board class
+  * ボードへの操作を抽象化
+  - empty  = -1
+  - circle = 0
+  - cross  = 1
+  - __init__(width, height)
+  - is_filled()
+  - is_win(stone_type)
+  - put(x, y, stone_type) 
+
+- Player class
+  * cpuやHumanの基底となるクラス
+  - name         # 勝利したプレイヤーを出力するときに使用
+  - color        # 自分の打つ石のタイプを保持
+  - put(board)   # ボードにstone_typeを着手
+  - think(board) # put()の内部でボードの座標を返すメソッド。
+
+- Human class
+  * extends Player and implements think().
+  - think(board)
+
+- Cpu class
+  * ボードを受け取り、何手か読んで手を返す。いろいろなアルゴリズムを選択できるようにする
+  - set_mode(mode)
+  - random(boad)
+  - minimax()
+  - think(board)
