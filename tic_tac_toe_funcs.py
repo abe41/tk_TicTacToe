@@ -1,22 +1,3 @@
-"""
- 2020/08/11/Tue: マルバツゲームを作る
-                 random.sample(list, k) listをシャッフルしてk個の要素取得して返す
-                 itertools.cycle() で無限イテレータを作れる usage: next(iter)
-                 for i in itertools.count():print(i);if i > 10:break
- 2020/08/12/Wed: mini-maxでcpu思考ルーチン作った。静的評価関数がミスってたり
-                 再帰が良くわからなかったりで2,3時間かかった。今もよくわかってない
-                 いや、理論はわかるが再帰での実装、手番の関係が微妙。
-                 minimaxで5手読めば負けないcpuは出来た。
-                 初手だけランダムで打てればもっと良い
-                 tkinterでマルバツゲームのguiも作った。
-                 guiの見栄えもよくしたい
-                 仕組みが完全には理解できておらず、何作ればいいかわからないからできない
-                 m,n,kゲーム k目並べ
-                 αβ法を実装する。
-                 minimax   -> 0.65s , 24424 node
-                 alphabeta -> 0.15s ,  3838 node
-                 だいぶ高速化できた
-"""
 import random
 import itertools
 import time
@@ -154,6 +135,7 @@ class Board:
                 if elm != self.empty:
                     cnt += 1
         return cnt
+
 
 class Player:
 
@@ -321,6 +303,7 @@ class Cpu(Player):
     def think(self, board):
         #return self.minimax(board, 5)
         return self.alpha_beta(board, self.depth)
+
 
 if __name__ == "__main__":
     g = TicTacToe()

@@ -1,14 +1,8 @@
-"""
- tk.Tk().withdraw()  ... ウィンドウ非表示
- tk.Tk().deiconify() ... ウインドウ表示
-"""
-
 from tic_tac_toe_funcs import *
-import tkinter as tk
 from tkinter import messagebox
 from tkinter import ttk
-import threading
-import time
+import tkinter as tk
+
 
 class TicTacGame:
 
@@ -160,6 +154,6 @@ class TicTacGame:
                     cv.create_line(x1+square_size//2, y1, x2-square_size//2, y2,
                                    width=p_size, fill=p_color)
 
+
 if __name__ == "__main__":
-    g = TicTacGame()
-    g.play()
+    TicTacGame().play()
